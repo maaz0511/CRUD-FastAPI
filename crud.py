@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import RedirectResponse
 from models import Student
 from typing import List
 
@@ -10,7 +11,7 @@ app = FastAPI(title="Student Management System", description="A simple CRUD API 
 # main route endpoint
 @app.get("/")
 def home():
-    return {'message':'Hi, Welcome to Student Management System using FastAPI.'}
+    return RedirectResponse(url="/docs")
 
 # 1. view all student details
 @app.get('/view_all', response_model=List[Student])
